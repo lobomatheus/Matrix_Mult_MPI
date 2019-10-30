@@ -1,5 +1,7 @@
 #executáveis
 serial
 paralelo
+paralelo_float
 
 #arquivos de saída
+*.txt

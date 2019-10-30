@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 int* geraMatriz (int ordem); //retorna uma matriz aleatória
 int* multMat (int *m1, int *m2, int ordem); //dadas m1 e m2 de mesma ordem, retorna m1*m2
@@ -7,17 +8,22 @@ int getPos (int *mat, int ordem, int l, int c); //retorna o elemento da linha l 
 int printMat (int *mat, int ordem); //imprime a matriz
 
 int main (){
-    int m1[]={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16}, m2[]={16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1};
+    int ordem = 3;
+    int *m1, *m2, *r;
 
-    int *r;
-    r = multMat(m1, m2, 4);
-    printMat(r, 4);
+    m1 = geraMatriz(ordem);
+    m2 = geraMatriz(ordem);
+    r = multMat(m1, m2, ordem);
+    printMat(m1, ordem);
+    printMat(m2, ordem);
+    printMat(r, ordem);
 }
 
 int* geraMatriz (int ordem){
     int *mat = (int*)malloc(ordem*ordem*sizeof(int));
     int i;
 
+    srand(time(NULL));
     for(i=0; i<(ordem*ordem); i++)
         mat[i] = rand()%1000;
 
@@ -52,4 +58,5 @@ int printMat (int *mat, int ordem){
         if(i>0 && i%ordem==(ordem-1))
             printf("\n");
     }
+    printf("\n");
 }
