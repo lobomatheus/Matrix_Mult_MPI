@@ -17,7 +17,7 @@ int* vetLinhas (int n_procs, int ordem);//retorna um vetor onde vet[i] = num de 
 void gravaArq (int ordem, int n_procs, double tempo);//salva os dados da execução no txt
 
 int main (int argc, char **argv){
-    int ordem = atoi(argv[1]);
+    int ordem = 5000;/*atoi(argv[1]);*/
     int n_procs, id, *n_linhas, i, linhas, ant=0;
     float *m1, *m2, *result;
     double T_ini, T_fim;
@@ -56,7 +56,7 @@ int main (int argc, char **argv){
         /*printMat(m1, ordem);
         printMat(m2, ordem);
         printMat(result, ordem);*/
-        gravaArq(ordem, n_procs, T_fim-T_ini);
+        //gravaArq(ordem, n_procs, T_fim-T_ini);
 
         free(m1);
         free(m2);
@@ -125,7 +125,7 @@ void printMat (float *mat, int ordem){
 }
 
 int* vetLinhas (int n_procs, int ordem){
-    int *n_linhas = (int*)malloc(n_procs), i, linhas, resto;
+    int *n_linhas = (int*)malloc(n_procs*sizeof(int)), i, linhas, resto;
 
     linhas = ordem/n_procs;//n de linhas por processo
     resto = ordem%n_procs;
